@@ -12,9 +12,11 @@ import com.shakir.thewellnessroom.check.ScanCheckInteractor
 import com.shakir.thewellnessroom.check_api.DataBodyCheck
 
 class ScannerActivity : AppCompatActivity() {
+
     private val checkViewModel = CheckViewModel()
     private val scanInteractor = ScanCheckInteractor()
     private val TOKEN = "1393.UgJKe7UUCJCf7ARal"
+    val productsList : MutableList<Product> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,32 +48,40 @@ class ScannerActivity : AppCompatActivity() {
 
                 Log.d("Check", "Dictionary: $checkDictionary")
                 Toast.makeText(this, "Чек отсканирован!", Toast.LENGTH_SHORT).show()
-                // Toast.makeText(this, "Check: $checkDictionary", Toast.LENGTH_SHORT).show()
+
+                val intentToMain = Intent(this, MainActivity::class.java)
 
                 checkViewModel.fetchNewCheck(
-                    DataBodyCheck(
-                        checkDictionary[2],
-                        checkDictionary[3],
-                        checkDictionary[4],
-                        checkDictionary[5].toInt().toString(),
-                        checkDictionary[1].toDouble().toString(),
-                        scanInteractor.makeDocDateTime(),
-                        "0",
-                        TOKEN
-                    ), {
-                        Log.d("Check", "CreditSum: " + it.totalSum.toString())
-                        Toast.makeText(this, "parse! $it", Toast.LENGTH_LONG).show()
+                        DataBodyCheck(
+                                checkDictionary[2],
+                                checkDictionary[3],
+                                checkDictionary[4],
+                                checkDictionary[5].toInt().toString(),
+                                checkDictionary[1].toDouble().toString(),
+                                scanInteractor.makeDocDateTime(),
+                                "0",
+                                TOKEN
+                        ), {
+                    for (i in it.items) {
+                        productsList.add(
+                                Product(
+                                        i.productName,
+                                        i.price.toDouble(),
+                                        i.quantity
+                                )
+                        )
                     }
+                    Log.d("Check", "Request: $it")
+                    Log.d("Check", "counts: ${it.items.size}")
+                }
                 ) {
                     Toast.makeText(
-                        this,
-                        "Ошибка при получении чека",
-                        Toast.LENGTH_LONG
+                            this,
+                            "Ошибка при получении чека",
+                            Toast.LENGTH_LONG
                     ).show()
                 }
-
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
+                startActivity(intentToMain)
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data)

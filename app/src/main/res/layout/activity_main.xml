@@ -27,13 +27,15 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
+        android:id="@+id/text_view_list_empty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/list_is_null"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline_2" />
+        app:layout_constraintTop_toTopOf="@+id/guideline_2"
+        android:visibility="gone"/>
 
     <Button
         android:id="@+id/button_scan_check"
