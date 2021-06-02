@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">The Wellness Room</string>
+
+    <!-- AuthActivity -->
+    <string name="header">The wellness room</string>
+    <string name="auth_button">Авторизоваться</string>
+    <string name="auth_edit_text">Введите номер телефона</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <!-- Menu -->
+    <string name="title_home">Главная</string>
+    <string name="title_products">Продукты</string>
+    <string name="title_settings">Настройки</string>
+
+    <!-- Just text -->
+    <string name="calories">Калории</string>
+    <string name="vitamins">Витамины</string>
+    <string name="scan_check">Сканировать чек</string>
+    <string name="list_last_products">Список покупок</string>
+    <string name="list_is_null">Список пуст</string>
+    <string name="slogan">Следи за здоровьем правильно!</string>
+
+</resources>
