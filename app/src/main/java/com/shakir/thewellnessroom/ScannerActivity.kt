@@ -1,15 +1,17 @@
 package com.shakir.thewellnessroom
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Parcelable
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.zxing.integration.android.IntentIntegrator
 import com.journeyapps.barcodescanner.CaptureActivity
 import com.shakir.thewellnessroom.check.CheckViewModel
 import com.shakir.thewellnessroom.check.ScanCheckInteractor
 import com.shakir.thewellnessroom.check_api.DataBodyCheck
+import java.util.*
 
 class ScannerActivity : AppCompatActivity() {
 
@@ -81,7 +83,14 @@ class ScannerActivity : AppCompatActivity() {
                             Toast.LENGTH_LONG
                     ).show()
                 }
-                startActivity(intentToMain)
+                startActivity(
+                    intentToMain.apply {
+                        putParcelableArrayListExtra(
+                            "products",
+                            productsList as ArrayList<out Parcelable>
+                        )
+                    }
+                )
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data)

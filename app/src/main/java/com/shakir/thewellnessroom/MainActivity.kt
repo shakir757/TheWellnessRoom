@@ -7,6 +7,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,9 +18,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val productsList : List<Product> = scannerActivity.productsList
+        val productsList: ArrayList<Product>? =
+            intent.getParcelableArrayListExtra("products")
 
-        if (productsList.isEmpty()) {
+        if (productsList.isNullOrEmpty()) {
             recycler_view_products.visibility = View.GONE
             text_view_list_empty.visibility = View.VISIBLE
         } else {
@@ -45,38 +47,46 @@ class MainActivity : AppCompatActivity() {
 
     private fun testData(): List<Product> {
         return listOf(
-                Product(
-                        "Колбаса Мираторг Московская",
-                        366.40,
-                        3),
-                Product(
-                        "Йогурт Danone 110 г.",
-                        50.80,
-                        1),
-                Product(
-                        "Творог Простоквашино 5%",
-                        44.50,
-                        2),
-                Product(
-                        "Яйца куриные",
-                        60.99,
-                        5),
-                Product(
-                        "Напиток coca-cola 1л.",
-                        80.00,
-                        1),
-                Product(
-                        "Чипсы Lays сметана и зелень",
-                        89.50,
-                        1),
-                Product(
-                        "Шоколад Alpen Gold 90г. с орехом",
-                        39.99,
-                        5),
-                Product(
-                        "Шоколад Alpe Gold 90г. обычный",
-                        39.99,
-                        6)
+            Product(
+                "Колбаса Мираторг Московская",
+                366.40,
+                3
+            ),
+            Product(
+                "Йогурт Danone 110 г.",
+                50.80,
+                1
+            ),
+            Product(
+                "Творог Простоквашино 5%",
+                44.50,
+                2
+            ),
+            Product(
+                "Яйца куриные",
+                60.99,
+                5
+            ),
+            Product(
+                "Напиток coca-cola 1л.",
+                80.00,
+                1
+            ),
+            Product(
+                "Чипсы Lays сметана и зелень",
+                89.50,
+                1
+            ),
+            Product(
+                "Шоколад Alpen Gold 90г. с орехом",
+                39.99,
+                5
+            ),
+            Product(
+                "Шоколад Alpe Gold 90г. обычный",
+                39.99,
+                6
+            )
         )
     }
 }
