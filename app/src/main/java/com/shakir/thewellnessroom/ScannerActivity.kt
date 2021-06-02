@@ -42,6 +42,7 @@ class ScannerActivity : AppCompatActivity() {
         if (result != null) {
             if (result.contents == null) {
                 Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show()
+                startActivity(Intent(this, MainActivity::class.java))
             } else {
                 Log.d("Check", "Check result: " + result.contents)
 
@@ -73,6 +74,14 @@ class ScannerActivity : AppCompatActivity() {
                                 )
                         )
                     }
+                    startActivity(
+                            intentToMain.apply {
+                                putParcelableArrayListExtra(
+                                        "products",
+                                        productsList as ArrayList<out Parcelable>
+                                )
+                            }
+                    )
                     Log.d("Check", "Request: $it")
                     Log.d("Check", "counts: ${it.items.size}")
                 }
@@ -82,15 +91,8 @@ class ScannerActivity : AppCompatActivity() {
                             "Ошибка при получении чека",
                             Toast.LENGTH_LONG
                     ).show()
+                    startActivity(Intent(this, MainActivity::class.java))
                 }
-                startActivity(
-                    intentToMain.apply {
-                        putParcelableArrayListExtra(
-                            "products",
-                            productsList as ArrayList<out Parcelable>
-                        )
-                    }
-                )
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data)

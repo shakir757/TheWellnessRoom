@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".ProductActivity"></activity>
         <activity android:name=".ScannerActivity" />
         <activity android:name=".StartActivity" />
         <activity android:name=".MainActivity">
@@ -21,10 +21,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name="com.journeyapps.barcodescanner.CaptureActivity"
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:stateNotNeeded="true"
-            android:windowSoftInputMode="stateAlwaysHidden"/>
-
+            android:windowSoftInputMode="stateAlwaysHidden" />
     </application>
+
 </manifest>

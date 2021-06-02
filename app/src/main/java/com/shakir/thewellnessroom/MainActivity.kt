@@ -11,8 +11,12 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    val viewAdapter = ProductsAdapter(listOf())
-    val scannerActivity = ScannerActivity()
+    val viewAdapter = ProductsAdapter(listOf()){
+        val intentToProduct = Intent(this, ProductActivity::class.java)
+        startActivity(intentToProduct.apply {
+            putExtra("nameProduct", it.name)
+        })
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
