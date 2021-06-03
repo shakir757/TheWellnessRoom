@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_main_screen"
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.Guideline
@@ -21,7 +22,7 @@
         android:layout_marginBottom="4dp"
         android:text="@string/list_last_products"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/guideline_2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,6 +34,7 @@
         android:layout_height="wrap_content"
         android:text="@string/list_is_null"
         android:layout_marginTop="16dp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline_2"
@@ -40,10 +42,13 @@
 
     <Button
         android:id="@+id/button_scan_check"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:layout_marginHorizontal="32dp"
         android:text="@string/scan_check"
+        android:textColor="@android:color/white"
+        android:background="@drawable/bg_button_scan_check"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

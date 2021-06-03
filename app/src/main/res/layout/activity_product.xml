@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_product_screen"
     tools:context=".ProductActivity">
 
     <TextView
@@ -15,6 +16,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:padding="8dp"
+        android:layout_marginHorizontal="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cardView"
@@ -30,12 +32,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ProgressBar
+            android:id="@+id/progress_bar_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+
         <ImageView
             android:id="@+id/image_view_product"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/product" />
+            android:visibility="gone"/>
 
     </androidx.cardview.widget.CardView>
 
@@ -43,10 +52,10 @@
         android:id="@+id/text_view_calories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Калории: kcal"
+        android:text="Калории:"
         android:layout_marginTop="8dp"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/cardView"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
@@ -54,10 +63,10 @@
         android:id="@+id/text_view_protein"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Протеин: g"
+        android:text="Протеин:"
         android:layout_marginTop="8dp"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/text_view_calories"
         app:layout_constraintTop_toBottomOf="@+id/text_view_calories" />
 
@@ -65,10 +74,10 @@
         android:id="@+id/text_view_fat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Жиры: g"
+        android:text="Жиры:"
         android:layout_marginTop="8dp"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/text_view_protein"
         app:layout_constraintTop_toBottomOf="@+id/text_view_protein" />
 
@@ -76,10 +85,10 @@
         android:id="@+id/text_view_carbs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Углеводы: g"
+        android:text="Углеводы:"
         android:layout_marginTop="8dp"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/text_view_fat"
         app:layout_constraintTop_toBottomOf="@+id/text_view_fat" />
 
@@ -87,12 +96,22 @@
         android:id="@+id/text_view_fiber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Белки: g"
+        android:text="Белки:"
         android:layout_marginTop="8dp"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/text_view_carbs"
         app:layout_constraintTop_toBottomOf="@+id/text_view_carbs" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar_stat"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/text_view_fiber"
+        app:layout_constraintStart_toEndOf="@+id/text_view_calories"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_calories"
+        android:visibility="gone"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
